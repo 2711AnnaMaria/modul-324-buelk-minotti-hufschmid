@@ -1,7 +1,7 @@
 # BBZBL Modul 324: Web-Applikation Template
 
 Dieses Template dient als Vorlage zum Starten eures Projekts.
-tääät$st
+
 Ziel ist es ein Repository zu erstellen, welches, [wie das Muster](https://github.com/herrhodel/modul-324-muster) eine
 Web-Applikation enthält, welche automatisch getestet, gebaut, released und deployed wird.
 
