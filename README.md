@@ -1,4 +1,21 @@
-# BBZBL Modul 324: Web-Applikation Template
+# SaveYourTiers - Eine Tierlist App
+
+Dank SaveYourTiers kannst du auf einfache Weise Ranglisten deiner Wahl erstellen! Mit dem minimalistischen Design ist es möglich innert kürzester zeit einfache Ranglisten zu erstellen und zu teilen. Die Ranglisten werden lokal im Browser gespeichert und somit ist es nicht notwendig sich ein Login zu erstellen.
+
+SaveYourTiers sorgt für lustige Momente zwischen Freunden, aber auch für nützliche Rankings im Arbeitsumfeld.
+
+Funktionen welche wir definitiv umsetzen werden:
+- Nutzer können eigene Kategorien erstellen.
+- Es können mehrere Einträge erstellt, eingeteilt und gewertet werden.
+- Man kann die Tierlist als PNG exportieren und teilen.
+- Es soll möglich sein, Text sowie Bilder einzufügen.
+- Das Design soll so Funktionsorientiert wie möglich sein. 
+
+In Zukunft können wir uns vorstellen folgende Features hinzuzufügen (nach dem Modul umsetzbar):
+- Gemeinsame Kollaboration in Echtzeit
+- Serverseitiges speichern der Ranglisten.
+
+## BBZBL Modul 324: Web-Applikation Template
 
 Dieses Template dient als Vorlage zum Starten eures Projekts.
 
