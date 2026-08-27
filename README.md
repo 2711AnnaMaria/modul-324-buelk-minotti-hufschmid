@@ -43,3 +43,35 @@ soll ermöglichen, dass ein Gesamtüberblick von Anfang an existiert.
 >
 > Der Ordner `docs` wird von Anfang an benötigt und ist direkt im starter
 > vorgegeben.
+
+## Lokale Entwicklung
+
+### Voraussetzungen
+- Node.js (LTS) - wird via `mise` verwaltet
+- npm (wird mit Node.js installiert)
+- [mise](https://mise.jq.rs/) (optional, für automatische Tool-Verwaltung)
+
+### Projekt starten
+
+1. **Abhängigkeiten installieren:**
+   ```bash
+   cd app
+   npm install
+   ```
+
+2. **Entwicklungsserver starten:**
+   ```bash
+   npm start
+   ```
+   Der Server läuft dann unter `http://localhost:4200` und wird automatisch neu geladen, wenn Änderungen gespeichert werden.
+
+3. **Build erstellen:**
+   ```bash
+   npm run build
+   ```
+   Die kompilierten Dateien werden im `dist/` Verzeichnis erstellt.
+
+### Weitere Befehle
+
+- `npm run watch` - Überwacht Dateien und führt einen kontinuierlichen Build durch
+- `npm test` - Führt die Tests aus
