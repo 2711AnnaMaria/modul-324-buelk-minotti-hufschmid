@@ -13,7 +13,7 @@ Komponenten arbeiten, ohne konflikte zu erschaffen.
 - **Wissen im Team**: Wir alle haben bereits viel mit Angular gearbeitet und kennen uns mit dem Framework aus. Dies 
 macht es uns einfacher, da wir uns nicht in ein neues Framework einarbeiten müssen und wir können unser Wissen direkt 
 anwenden.
-- **Große Community und Unterstützung**: Angular hat eine große Community, die uns bei Problemen und Fragen helfen kann.
+- **Grosse Community und Unterstützung**: Angular hat eine große Community, die uns bei Problemen und Fragen helfen kann.
 - **TypeScript**: Angular verwendet TypeScript, eine statisch typisierte Sprache, die uns hilft, Fehler frühzeitig zu 
 erkennen und die Codequalität zu verbessern.
 - **Batteries Included (All-in-One-Lösung)**: Während Bibliotheken wie React zusätzliche Pakete für Routing, 
@@ -23,7 +23,7 @@ Routing, Forms (ReactiveForms), HttpClient und Testing mit.
 uns bei der Entwicklung helfen können. Auch eine eigene Library zu erstellen für z.B. wiederverwendbare Komponenten 
 ist sehr einfach.
 - **AI Tutor**: Der AI Tutor von Angular kann verwendet werden, um uns mithilfe von KI bei der Entwicklung zu
-unterstützen. Dieser ist primär dafür da, um uns beim verständnis von Angular zu helfen. 
+unterstützen. Dieser ist primär dafür da, um uns beim Verständnis von Angular zu helfen. 
 
 ## Dokumentationen
 
