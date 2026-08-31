@@ -15,7 +15,7 @@ In Zukunft können wir uns vorstellen folgende Features hinzuzufügen (nach dem 
 - Gemeinsame Kollaboration in Echtzeit
 - Serverseitiges speichern der Ranglisten.
 
-## BBZBL Modul 324: Web-Applikation Template
+## BBZBL Modul 324: SaveYourTiers - Template
 
 Dieses Template dient als Vorlage zum Starten eures Projekts.
 
