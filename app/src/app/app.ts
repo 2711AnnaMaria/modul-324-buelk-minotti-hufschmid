@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -13,6 +13,8 @@ export class App {
   private readonly router = inject(Router);
   private readonly location = inject(Location);
 
+  @ViewChild('modalInputRef') modalInputRef?: ElementRef<HTMLInputElement>;
+
   isModalOpen = false;
   tierlistName = '';
 
@@ -25,9 +27,11 @@ export class App {
   }
 
   openCreateModal(): void {
-
     this.tierlistName = '';
     this.isModalOpen = true;
+    setTimeout(() => {
+      this.modalInputRef?.nativeElement.focus();
+    }, 0);
   }
 
   closeModal(): void {
