@@ -1,1 +1,60 @@
-<router-outlet></router-outlet>
+<header class="app-header">
+  <div class="header-left">
+    <button type="button" class="back-link" (click)="goBack()" title="Zurück" aria-label="Zurück">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </button>
+    <div class="title-meta">
+      <a routerLink="/" class="title-link">
+        <h1 class="title">SaveYourTiers</h1>
+      </a>
+      <p class="subtitle">Save Your Tiers for another day</p>
+    </div>
+  </div>
+  @if (!isEditorView) {
+    <button class="plus-btn" (click)="openCreateModal()" aria-label="Neue Tierliste">+</button>
+  }
+</header>
+
+<main class="app-content">
+  <router-outlet></router-outlet>
+</main>
+
+@if (isModalOpen) {
+  <div
+    class="modal-backdrop"
+    role="button"
+    tabindex="-1"
+    (click)="closeModal()"
+    (keydown.escape)="closeModal()"
+  >
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      tabindex="-1"
+      (click)="$event.stopPropagation()"
+      (keydown)="$event.stopPropagation()"
+    >
+      <h2 id="modal-title" class="modal-title">Neue Tierliste</h2>
+      <form (ngSubmit)="createTierlist()">
+        <input
+          #modalInputRef
+          type="text"
+          class="modal-input"
+          placeholder="Name der Tierliste eingeben..."
+          [(ngModel)]="tierlistName"
+          name="tierlistName"
+        />
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="closeModal()">Abbrechen</button>
+          <button type="submit" class="btn-create" [disabled]="!tierlistName.trim()">Erstellen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
+
