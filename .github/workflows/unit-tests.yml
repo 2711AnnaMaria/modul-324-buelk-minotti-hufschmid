@@ -1,0 +1,25 @@
+name: Unit Test
+on:
+  push:
+    paths: app/**
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24 # lts
+          cache: "npm"
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        working-directory: app
+        run: npm ci
+      - name: Install Playwright Chromium
+        working-directory: app
+        run: npx playwright install --with-deps chromium
+      - name: Unit Test
+        working-directory: app
+        run: npm run test -- --watch=false
