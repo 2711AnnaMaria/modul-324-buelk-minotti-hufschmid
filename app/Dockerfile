@@ -1,4 +1,4 @@
-FROM node:26-slim AS builderr
+FROM node:24-bookworm-slim AS builder
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ RUN npm ci && npm run build
 
 FROM nginx:1.29-bookworm
 
-LABEL service="myapp"
+LABEL service="save-your-tears"
 
 COPY --from=builder /app/dist/app/browser /usr/share/nginx/html
 
