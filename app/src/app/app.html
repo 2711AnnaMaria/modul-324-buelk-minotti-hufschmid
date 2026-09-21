@@ -48,6 +48,7 @@
       tabindex="-1"
       (click)="$event.stopPropagation()"
       (keydown)="$event.stopPropagation()"
+      (keydown.escape)="closeModal()"
     >
       <h2 id="modal-title" class="modal-title">Neue Tierliste</h2>
       <form (ngSubmit)="createTierlist()">
