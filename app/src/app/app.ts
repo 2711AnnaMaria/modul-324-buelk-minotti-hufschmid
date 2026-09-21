@@ -48,4 +48,3 @@ export class App {
     this.router.navigate(['/editor']);
   }
 }
-

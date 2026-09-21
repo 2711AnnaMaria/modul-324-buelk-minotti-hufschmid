@@ -1,7 +1,17 @@
 <header class="app-header">
   <div class="header-left">
     <button type="button" class="back-link" (click)="goBack()" title="Zurück" aria-label="Zurück">
-      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="26"
+        height="26"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <line x1="19" y1="12" x2="5" y2="12"></line>
         <polyline points="12 19 5 12 12 5"></polyline>
       </svg>
@@ -51,10 +61,11 @@
         />
         <div class="modal-actions">
           <button type="button" class="btn-cancel" (click)="closeModal()">Abbrechen</button>
-          <button type="submit" class="btn-create" [disabled]="!tierlistName.trim()">Erstellen</button>
+          <button type="submit" class="btn-create" [disabled]="!tierlistName.trim()">
+            Erstellen
+          </button>
         </div>
       </form>
     </div>
   </div>
 }
-

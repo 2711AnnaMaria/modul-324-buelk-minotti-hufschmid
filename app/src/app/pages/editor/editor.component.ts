@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss',
 })
-
 export class EditorComponent implements OnInit {
   @ViewChild('titleInputRef') titleInputRef?: ElementRef<HTMLInputElement>;
 
@@ -49,5 +48,3 @@ export class EditorComponent implements OnInit {
     this.isEditingTitle = false;
   }
 }
-
-
