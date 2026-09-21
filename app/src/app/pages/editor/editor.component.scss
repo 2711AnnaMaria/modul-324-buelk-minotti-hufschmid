@@ -1,4 +1,109 @@
 :host {
   display: block;
-  padding: 1rem;
+  padding: 1rem 2rem;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 0.5rem 0;
+
+  .title-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .title-display-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    font: inherit;
+    text-align: inherit;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: rgba(237, 233, 254, 0.5);
+
+      .edit-icon {
+        opacity: 1;
+        color: #8b5cf6;
+      }
+    }
+
+    .title-text {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #111827;
+      letter-spacing: -0.01em;
+    }
+
+    .edit-icon {
+      padding: 2px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4b5563;
+      opacity: 0.85;
+      transition:
+        opacity 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        color: #8b5cf6;
+      }
+    }
+  }
+
+  .title-edit-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 450px;
+
+    .title-input {
+      flex: 1;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #111827;
+      text-align: center;
+      border: 1.5px solid #8b5cf6;
+      border-radius: 8px;
+      padding: 0.25rem 0.75rem;
+      background-color: #ffffff;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+    }
+
+    .save-icon-btn {
+      background-color: #8b5cf6;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+
+      &:hover {
+        background-color: #7c3aed;
+      }
+    }
+  }
 }
