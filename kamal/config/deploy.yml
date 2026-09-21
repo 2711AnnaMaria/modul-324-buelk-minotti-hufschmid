@@ -5,7 +5,7 @@
 service: save-your-tiers
 
 # Name vom Container-Image
-image: m324/myapp
+image: m324/save-your-tiers
 
 # Auf diesen Server deployen
 # INFO: Wir verwenden die öffentliche IP der AWS-VM via CI-Pipeline
