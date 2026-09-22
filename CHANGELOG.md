@@ -1,0 +1,35 @@
+# Changelog
+
+## 1.0.0 (2026-09-22)
+
+
+### Features
+
+* add Docker setup ([#56](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/56)) ([eee7148](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/eee7148ec0655a915ea2920a75bd6ef8d59419c7))
+* add editor component with routing back to home component ([74b74ed](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/74b74ed5438cb8fbf196741b87bc2d5d963b0e2e))
+* add escape key functionality to close modal ([0093422](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/009342228a8e232afc863eeb61d485ace69b1cb0))
+* add header with navigation and modal for creating tierlists ([58dee75](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/58dee75aa293ea62fe844dbac8f3aded53249e5c))
+* add home-page ([#43](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/43)) ([81b3fa6](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/81b3fa6c4863aa514dc91513106be8eaed083d7a))
+* Add Playwright to project ([#51](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/51)) ([0ffb61f](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/0ffb61f81bac10ecc83c6ea06f768a95567be342))
+* Add Ready to Deploy File ([#63](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/63)) ([301f8ef](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/301f8efd9ac9f876709edcf5e326fd11c367a987))
+* add release-please yaml config ([#40](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/40)) ([4c4578d](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/4c4578db1aa2ecfed21c8e21e2a82e150caa38cd))
+* add router provider to App testing module ([3067f87](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/3067f87011aad42ad68dc7bc0e8e0ffa4c3e502a))
+* add router provider to App testing module ([#21](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/21)) ([1373911](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/13739117228a0676db54c08f477609020d44b17d))
+* add router provider to App testing module ([#21](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/21)) ([1373911](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/13739117228a0676db54c08f477609020d44b17d))
+* Add Vitest to project ([#52](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/52)) ([fcb7d2c](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/fcb7d2cecf647acf241d31bb85b48d25293f1676))
+* added a new home-page ([81b3fa6](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/81b3fa6c4863aa514dc91513106be8eaed083d7a))
+* Added Linting and setup GitHub Workflow ([#47](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/47)) ([#48](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/48)) ([be4af4f](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/be4af4f37e19c83c311e7d56ca95ea36b7a82487))
+* Added USE_CASES.md ([#13](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/13)) ([#53](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/53)) ([0a07171](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/0a07171360d2d65ac245763b760ab1f87d1db2ac))
+* edit title of a tierlist ([#21](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/21)) ([52dfc74](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/52dfc7467f44049b6b2d34cd5b8e01d34f06268b))
+* edit title of a tierlist ([#21](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/21)) ([52dfc74](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/52dfc7467f44049b6b2d34cd5b8e01d34f06268b))
+* enhance modal accessibility and improve title editing UI ([e5e39f9](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/e5e39f9ca2e6d126b54be931ce5c1490f3a99757))
+* format project using prettier ([b9099b2](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/b9099b2736f058aee75f124f2622a51611c5ebaa))
+* implement home component and add plus button for adding new tierlists ([e21caaf](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/e21caafc160c5ade82dd06902e7087d35a59f8fe))
+* implement title editing functionality in editor component ([065fecb](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/065fecbbac6db2d6a5009ab77f0ceb144814acc9))
+* improve modal accessibility by adding roles and tabindex attributes ([ba4f524](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/ba4f52474967001eeea71890ba831a935f3e47c8))
+* initialized angular project ([#42](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/42)) ([2b647b2](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/2b647b220bc359c132b86e760620ff33a4a67c79))
+* Kamal konfigurieren ([#62](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/62)) ([becb868](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/becb8683e590a1ce632740d57dd71b38f7bfd037))
+* remove header and button from home component, update styles ([aafb31c](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/aafb31c7cd2e031a486df4e1817bf758e4238847))
+* removed back button from home page ([c2b6b84](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/c2b6b84476870ef99c6dd64460e6184f0b1e285d))
+* set up initial routing and format code ([a085453](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/a08545365de299437f8d72e8df84c9acb460f35b))
+* Terraform provisioning ([#61](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/61)) ([52e3852](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/52e3852b9f39e11537cf47a5ed4404a40d880318))
