@@ -14,6 +14,15 @@ export class EditorComponent implements OnInit {
   tempTierlistName = 'Tierlist Name';
   isEditingTitle = false;
 
+  tiers = [
+    { id: 's', label: 'S', color: '#9775fa' },
+    { id: 'a', label: 'A', color: '#4dabf7' },
+    { id: 'b', label: 'B', color: '#69db7c' },
+    { id: 'c', label: 'C', color: '#ffd43b' },
+    { id: 'd', label: 'D', color: '#ffa94d' },
+    { id: 'f', label: 'F', color: '#fa5252' },
+  ];
+
   ngOnInit(): void {
     const nameFromStorage = localStorage.getItem('tierlistName');
     if (nameFromStorage && nameFromStorage.trim()) {
