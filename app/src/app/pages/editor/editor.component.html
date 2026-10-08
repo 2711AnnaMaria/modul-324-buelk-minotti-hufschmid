@@ -56,3 +56,70 @@
     }
   </div>
 </div>
+
+<div class="tier-board-wrapper">
+  <div class="tier-board">
+    @for (tier of tiers; track tier.id) {
+      <div class="tier-row">
+        <div class="tier-label" [style.background-color]="tier.color">{{ tier.label }}</div>
+        <div class="tier-slot"></div>
+      </div>
+    }
+  </div>
+  <button
+    type="button"
+    class="round-plus-btn add-tier-btn"
+    (click)="openAddTierModal()"
+    aria-label="Neuen Rang hinzufügen"
+  >
+    +
+  </button>
+</div>
+
+<div class="items-row">
+  <button type="button" class="add-item-btn-group" aria-label="Neues Objekt hinzufügen">
+    <span class="round-plus-btn add-item-btn">+</span>
+    <span class="add-item-label">Objekt hinzufügen</span>
+  </button>
+</div>
+
+@if (isTierModalOpen) {
+  <div
+    class="modal-backdrop"
+    role="button"
+    tabindex="-1"
+    (click)="closeTierModal()"
+    (window:keydown.escape)="closeTierModal()"
+  >
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="tier-modal-title"
+      tabindex="-1"
+      (click)="$event.stopPropagation()"
+      (keydown)="$event.stopPropagation()"
+      (keydown.escape)="closeTierModal()"
+    >
+      <h2 id="tier-modal-title" class="modal-title">Neuer Rang</h2>
+      <form (ngSubmit)="createTier()">
+        <input
+          #tierNameInputRef
+          type="text"
+          class="modal-input"
+          placeholder="Name des Rangs eingeben..."
+          aria-label="Name des Rangs"
+          [(ngModel)]="newTierName"
+          name="newTierName"
+          required
+        />
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="closeTierModal()">Abbrechen</button>
+          <button type="submit" class="btn-create" [disabled]="!newTierName.trim()">
+            Erstellen
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
