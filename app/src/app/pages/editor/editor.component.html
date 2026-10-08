@@ -66,7 +66,12 @@
       </div>
     }
   </div>
-  <button type="button" class="round-plus-btn add-tier-btn" aria-label="Neuen Tier hinzufügen">
+  <button
+    type="button"
+    class="round-plus-btn add-tier-btn"
+    (click)="openAddTierModal()"
+    aria-label="Neuen Rang hinzufügen"
+  >
     +
   </button>
 </div>
@@ -77,3 +82,44 @@
     <span class="add-item-label">Objekt hinzufügen</span>
   </button>
 </div>
+
+@if (isTierModalOpen) {
+  <div
+    class="modal-backdrop"
+    role="button"
+    tabindex="-1"
+    (click)="closeTierModal()"
+    (window:keydown.escape)="closeTierModal()"
+  >
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="tier-modal-title"
+      tabindex="-1"
+      (click)="$event.stopPropagation()"
+      (keydown)="$event.stopPropagation()"
+      (keydown.escape)="closeTierModal()"
+    >
+      <h2 id="tier-modal-title" class="modal-title">Neuer Rang</h2>
+      <form (ngSubmit)="createTier()">
+        <input
+          #tierNameInputRef
+          type="text"
+          class="modal-input"
+          placeholder="Name des Rangs eingeben..."
+          aria-label="Name des Rangs"
+          [(ngModel)]="newTierName"
+          name="newTierName"
+          required
+        />
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="closeTierModal()">Abbrechen</button>
+          <button type="submit" class="btn-create" [disabled]="!newTierName.trim()">
+            Erstellen
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

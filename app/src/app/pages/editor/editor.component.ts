@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class EditorComponent implements OnInit {
   @ViewChild('titleInputRef') titleInputRef?: ElementRef<HTMLInputElement>;
+  @ViewChild('tierNameInputRef') tierNameInputRef?: ElementRef<HTMLInputElement>;
 
   tierlistName = 'Tierlist Name';
   tempTierlistName = 'Tierlist Name';
@@ -22,6 +23,9 @@ export class EditorComponent implements OnInit {
     { id: 'd', label: 'D', color: '#ffa94d' },
     { id: 'f', label: 'F', color: '#fa5252' },
   ];
+
+  isTierModalOpen = false;
+  newTierName = '';
 
   ngOnInit(): void {
     const nameFromStorage = localStorage.getItem('tierlistName');
@@ -55,5 +59,31 @@ export class EditorComponent implements OnInit {
   cancelEditing(): void {
     this.tempTierlistName = this.tierlistName;
     this.isEditingTitle = false;
+  }
+
+  openAddTierModal(): void {
+    this.newTierName = '';
+    this.isTierModalOpen = true;
+    setTimeout(() => {
+      this.tierNameInputRef?.nativeElement.focus();
+    }, 0);
+  }
+
+  closeTierModal(): void {
+    this.isTierModalOpen = false;
+  }
+
+  createTier(): void {
+    const name = this.newTierName.trim();
+    if (!name) {
+      return;
+    }
+
+    this.tiers.push({
+      id: `tier-${this.tiers.length + 1}`,
+      label: name,
+      color: '#9775fa',
+    });
+    this.isTierModalOpen = false;
   }
 }
