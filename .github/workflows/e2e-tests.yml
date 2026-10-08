@@ -1,15 +1,15 @@
 name: E2E Tests
 on:
   push:
-    paths: app/**
+    paths:
+      - "app/**"
+      - ".github/workflows/e2e-tests.yml"
 jobs:
   test:
     timeout-minutes: 60
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
       - uses: actions/checkout@v7
       - name: Install node
         uses: actions/setup-node@v6
@@ -17,9 +17,15 @@ jobs:
           node-version: 24 # lts
           cache: "npm"
           cache-dependency-path: app/package-lock.json
+      - name: Install npm dependencies
+        working-directory: app
+        run: npm ci
+      - name: Install Playwright Browsers
+        working-directory: app
+        run: npx playwright install --with-deps
       - name: e2e Test
         working-directory: app
-        run: npm ci && npm run e2e:ci
+        run: npm run e2e:ci
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
