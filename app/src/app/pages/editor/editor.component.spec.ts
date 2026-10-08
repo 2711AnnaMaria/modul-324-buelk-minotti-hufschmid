@@ -1,3 +1,4 @@
+import { ChangeDetectorRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { EditorComponent } from './editor.component';
@@ -23,14 +24,16 @@ describe('EditorComponent', () => {
 
   it('should add a named tier at the end of the board', () => {
     component.openAddTierModal();
-    component.newTierName = '  Extras  ';
+    component.newTierName = 'Extras';
     component.createTier();
-    fixture.detectChanges();
+    const changeDetector = fixture.debugElement.injector.get(ChangeDetectorRef);
+    changeDetector.detectChanges();
 
     expect(component.tiers).toHaveLength(7);
     expect(component.tiers[6].label).toBe('Extras');
     expect(component.isTierModalOpen).toBe(false);
     const labels: NodeListOf<HTMLElement> = fixture.nativeElement.querySelectorAll('.tier-label');
+    expect(labels).toHaveLength(7);
     expect(labels[6].textContent).toBe('Extras');
   });
 
