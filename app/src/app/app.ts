@@ -45,6 +45,7 @@ export class App {
     }
     this.isModalOpen = false;
     localStorage.setItem('tierlistName', name);
+    localStorage.removeItem('tierlistItems');
     this.router.navigate(['/editor']);
   }
 }

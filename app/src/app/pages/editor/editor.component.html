@@ -56,3 +56,115 @@
     }
   </div>
 </div>
+
+<div class="tier-board-wrapper">
+  <div class="tier-board">
+    @for (tier of tiers; track tier.id) {
+      <div class="tier-row">
+        <div class="tier-label" [style.background-color]="tier.color">{{ tier.label }}</div>
+        <div class="tier-slot"></div>
+      </div>
+    }
+  </div>
+  <button type="button" class="round-plus-btn add-tier-btn" aria-label="Neuen Tier hinzufügen">
+    +
+  </button>
+</div>
+
+<div class="items-row">
+  @for (item of items; track item.id) {
+    <div class="item-tile-wrapper">
+      <div
+        class="item-tile"
+        [style.background-color]="item.imageUrl ? null : item.color"
+        [style.background-image]="item.imageUrl ? 'url(' + item.imageUrl + ')' : null"
+      >
+        @if (!item.imageUrl) {
+          <span class="item-tile-text" [style.color]="getItemTextColor(item.color)">{{
+            item.name
+          }}</span>
+        }
+      </div>
+      @if (item.imageUrl) {
+        <span class="item-tile-label">{{ item.name }}</span>
+      }
+    </div>
+  }
+  <button
+    type="button"
+    class="add-item-btn-group"
+    (click)="openAddItemModal()"
+    aria-label="Neues Item hinzufügen"
+  >
+    <span class="round-plus-btn add-item-btn">+</span>
+    <span class="add-item-label">Item hinzufügen</span>
+  </button>
+</div>
+
+@if (isItemModalOpen) {
+  <div
+    class="modal-backdrop"
+    role="button"
+    tabindex="-1"
+    (click)="closeItemModal()"
+    (window:keydown.escape)="closeItemModal()"
+  >
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="item-modal-title"
+      tabindex="-1"
+      (click)="$event.stopPropagation()"
+      (keydown)="$event.stopPropagation()"
+      (keydown.escape)="closeItemModal()"
+    >
+      <h2 id="item-modal-title" class="modal-title">Neues Item</h2>
+      <form (ngSubmit)="createItem()">
+        <input
+          #itemNameInputRef
+          type="text"
+          class="modal-input"
+          placeholder="Name des Items eingeben..."
+          [(ngModel)]="newItemName"
+          name="newItemName"
+        />
+
+        <div class="modal-field">
+          <label for="newItemColor" class="modal-field-label">Farbe (optional)</label>
+          <input
+            id="newItemColor"
+            type="color"
+            class="modal-color-input"
+            [(ngModel)]="newItemColor"
+            name="newItemColor"
+          />
+        </div>
+
+        <div class="modal-field">
+          <span class="modal-field-label">Bild (optional)</span>
+          <label for="newItemImage" class="file-upload-btn">
+            {{ newItemImageName ? 'Bild ändern' : 'Bild auswählen' }}
+          </label>
+          <input
+            id="newItemImage"
+            type="file"
+            accept="image/*"
+            class="modal-file-input"
+            (change)="onItemImageSelected($event)"
+          />
+        </div>
+        @if (newItemImageName) {
+          <p class="file-upload-name">{{ newItemImageName }}</p>
+        }
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="closeItemModal()">Abbrechen</button>
+          <button type="submit" class="btn-create" [disabled]="!newItemName.trim()">
+            Erstellen
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
