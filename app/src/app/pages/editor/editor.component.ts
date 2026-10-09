@@ -1,9 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
+import { Tier, TierItem } from './tier.model';
 
 @Component({
   selector: 'app-editor',
-  imports: [FormsModule],
+  imports: [FormsModule, DragDropModule],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss',
 })
@@ -14,22 +21,24 @@ export class EditorComponent implements OnInit {
   tempTierlistName = 'Tierlist Name';
   isEditingTitle = false;
 
-  tiers = [
-    { id: 's', label: 'S', color: '#9775fa' },
-    { id: 'a', label: 'A', color: '#4dabf7' },
-    { id: 'b', label: 'B', color: '#69db7c' },
-    { id: 'c', label: 'C', color: '#ffd43b' },
-    { id: 'd', label: 'D', color: '#ffa94d' },
-    { id: 'f', label: 'F', color: '#fa5252' },
+  tiers: Tier[] = [
+    { id: 's', label: 'S', color: '#9775fa', items: [] },
+    { id: 'a', label: 'A', color: '#4dabf7', items: [] },
+    { id: 'b', label: 'B', color: '#69db7c', items: [] },
+    { id: 'c', label: 'C', color: '#ffd43b', items: [] },
+    { id: 'd', label: 'D', color: '#ffa94d', items: [] },
+    { id: 'f', label: 'F', color: '#fa5252', items: [] },
   ];
 
-  items: { id: string; name: string; color: string; imageUrl: string | null }[] = [];
+  unrankedItems: TierItem[] = [];
 
   isItemModalOpen = false;
   newItemName = '';
   newItemColor = '';
   newItemImageDataUrl: string | null = null;
   newItemImageName: string | null = null;
+
+  readonly dropListIds: string[] = ['unranked', ...this.tiers.map(tier => `tier-${tier.id}`)];
 
   ngOnInit(): void {
     const nameFromStorage = localStorage.getItem('tierlistName');
@@ -41,9 +50,9 @@ export class EditorComponent implements OnInit {
     const itemsFromStorage = localStorage.getItem('tierlistItems');
     if (itemsFromStorage) {
       try {
-        this.items = JSON.parse(itemsFromStorage);
+        this.unrankedItems = JSON.parse(itemsFromStorage);
       } catch {
-        this.items = [];
+        this.unrankedItems = [];
       }
     }
   }
@@ -105,14 +114,27 @@ export class EditorComponent implements OnInit {
     if (!name) {
       return;
     }
-    this.items.push({
+    this.unrankedItems.push({
       id: `item-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       name,
       color: this.newItemColor || this.randomItemColor(),
       imageUrl: this.newItemImageDataUrl,
     });
-    localStorage.setItem('tierlistItems', JSON.stringify(this.items));
+    localStorage.setItem('tierlistItems', JSON.stringify(this.unrankedItems));
     this.isItemModalOpen = false;
+  }
+
+  onDrop(event: CdkDragDrop<TierItem[]>): void {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 
   private randomItemColor(): string {

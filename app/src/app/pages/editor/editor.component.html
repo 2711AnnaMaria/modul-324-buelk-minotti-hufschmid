@@ -62,7 +62,34 @@
     @for (tier of tiers; track tier.id) {
       <div class="tier-row">
         <div class="tier-label" [style.background-color]="tier.color">{{ tier.label }}</div>
-        <div class="tier-slot"></div>
+        <div
+          class="tier-slot"
+          cdkDropList
+          cdkDropListOrientation="horizontal"
+          [id]="'tier-' + tier.id"
+          [cdkDropListData]="tier.items"
+          [cdkDropListConnectedTo]="dropListIds"
+          (cdkDropListDropped)="onDrop($event)"
+        >
+          @for (item of tier.items; track item.id) {
+            <div class="item-tile-wrapper" cdkDrag [cdkDragData]="item">
+              <div
+                class="item-tile"
+                [style.background-color]="item.imageUrl ? null : item.color"
+                [style.background-image]="item.imageUrl ? 'url(' + item.imageUrl + ')' : null"
+              >
+                @if (!item.imageUrl) {
+                  <span class="item-tile-text" [style.color]="getItemTextColor(item.color)">{{
+                    item.name
+                  }}</span>
+                }
+              </div>
+              @if (item.imageUrl) {
+                <span class="item-tile-label">{{ item.name }}</span>
+              }
+            </div>
+          }
+        </div>
       </div>
     }
   </div>
@@ -71,9 +98,17 @@
   </button>
 </div>
 
-<div class="items-row">
-  @for (item of items; track item.id) {
-    <div class="item-tile-wrapper">
+<div
+  class="items-row"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  id="unranked"
+  [cdkDropListData]="unrankedItems"
+  [cdkDropListConnectedTo]="dropListIds"
+  (cdkDropListDropped)="onDrop($event)"
+>
+  @for (item of unrankedItems; track item.id) {
+    <div class="item-tile-wrapper" cdkDrag [cdkDragData]="item">
       <div
         class="item-tile"
         [style.background-color]="item.imageUrl ? null : item.color"
