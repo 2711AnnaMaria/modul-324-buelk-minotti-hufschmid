@@ -56,3 +56,24 @@
     }
   </div>
 </div>
+
+<div class="tier-board-wrapper">
+  <div class="tier-board">
+    @for (tier of tiers; track tier.id) {
+      <div class="tier-row">
+        <div class="tier-label" [style.background-color]="tier.color">{{ tier.label }}</div>
+        <div class="tier-slot"></div>
+      </div>
+    }
+  </div>
+  <button type="button" class="round-plus-btn add-tier-btn" aria-label="Neuen Tier hinzufügen">
+    +
+  </button>
+</div>
+
+<div class="items-row">
+  <button type="button" class="add-item-btn-group" aria-label="Neues Objekt hinzufügen">
+    <span class="round-plus-btn add-item-btn">+</span>
+    <span class="add-item-label">Objekt hinzufügen</span>
+  </button>
+</div>
