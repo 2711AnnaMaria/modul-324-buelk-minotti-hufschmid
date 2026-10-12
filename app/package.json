@@ -16,22 +16,13 @@
   },
   "wireit": {
     "e2e": {
-      "command": "playwright test",
-      "dependencies": [
-        "e2e:server"
-      ]
+      "command": "playwright test"
     },
     "e2e:ui": {
-      "command": "playwright test --ui",
-      "dependencies": [
-        "e2e:server"
-      ]
+      "command": "playwright test --ui"
     },
     "e2e:ci": {
-      "command": "playwright test",
-      "dependencies": [
-        "e2e:server"
-      ]
+      "command": "playwright test"
     },
     "e2e:server": {
       "command": "ng serve --port 4200",

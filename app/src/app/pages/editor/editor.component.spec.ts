@@ -8,6 +8,8 @@ describe('EditorComponent', () => {
   let fixture: ComponentFixture<EditorComponent>;
 
   beforeEach(async () => {
+    localStorage.removeItem('tierlistName');
+    localStorage.removeItem('tierlistItems');
     await TestBed.configureTestingModule({
       imports: [EditorComponent],
       providers: [provideRouter([])],
@@ -18,9 +20,61 @@ describe('EditorComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    localStorage.removeItem('tierlistName');
+    localStorage.removeItem('tierlistItems');
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should persist a trimmed item name and its selected color', () => {
+    component.openAddItemModal();
+    component.newItemName = '  Kuchen  ';
+    component.newItemColor = '#123456';
+    component.createItem();
+
+    expect(component.items).toHaveLength(1);
+    expect(component.items[0]).toMatchObject({
+      name: 'Kuchen',
+      color: '#123456',
+      imageUrl: null,
+    });
+    expect(JSON.parse(localStorage.getItem('tierlistItems')!)).toEqual(component.items);
+    expect(component.isItemModalOpen).toBe(false);
+
+    const restored = TestBed.createComponent(EditorComponent);
+    restored.detectChanges();
+    expect(restored.componentInstance.items).toEqual(component.items);
+  });
+
+  it('should not create an item with a blank name', () => {
+    component.openAddItemModal();
+    component.newItemName = '   ';
+    component.createItem();
+
+    expect(component.items).toHaveLength(0);
+    expect(localStorage.getItem('tierlistItems')).toBeNull();
+    expect(component.isItemModalOpen).toBe(true);
+  });
+
+  it('should assign a valid random color when no color is selected', () => {
+    component.newItemName = 'Kuchen';
+    component.createItem();
+
+    expect(component.items[0].color).toMatch(/^#[0-9a-f]{6}$/);
+  });
+
+  it.each(['invalid json', 'null', '{}', '[null]'])(
+    'should ignore invalid stored items: %s',
+    storedItems => {
+      localStorage.setItem('tierlistItems', storedItems);
+      const restored = TestBed.createComponent(EditorComponent);
+      restored.detectChanges();
+      expect(restored.componentInstance.items).toEqual([]);
+    },
+  );
 
   it('should add a named tier at the end of the board', () => {
     component.openAddTierModal();

@@ -1,6 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+interface TierlistItem {
+  id: string;
+  name: string;
+  color: string;
+  imageUrl: string | null;
+}
+
 @Component({
   selector: 'app-editor',
   imports: [FormsModule],
@@ -10,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 export class EditorComponent implements OnInit {
   @ViewChild('titleInputRef') titleInputRef?: ElementRef<HTMLInputElement>;
   @ViewChild('tierNameInputRef') tierNameInputRef?: ElementRef<HTMLInputElement>;
+  @ViewChild('itemNameInputRef') itemNameInputRef?: ElementRef<HTMLInputElement>;
 
   tierlistName = 'Tierlist Name';
   tempTierlistName = 'Tierlist Name';
@@ -24,7 +32,10 @@ export class EditorComponent implements OnInit {
     { id: 'f', label: 'F', color: '#fa5252' },
   ];
 
-  items: { id: string; name: string; color: string; imageUrl: string | null }[] = [];
+  items: TierlistItem[] = [];
+
+  isTierModalOpen = false;
+  newTierName = '';
 
   isItemModalOpen = false;
   newItemName = '';
@@ -42,7 +53,8 @@ export class EditorComponent implements OnInit {
     const itemsFromStorage = localStorage.getItem('tierlistItems');
     if (itemsFromStorage) {
       try {
-        this.items = JSON.parse(itemsFromStorage);
+        const storedItems: unknown = JSON.parse(itemsFromStorage);
+        this.items = Array.isArray(storedItems) ? storedItems.filter(isTierlistItem) : [];
       } catch {
         this.items = [];
       }
@@ -81,6 +93,9 @@ export class EditorComponent implements OnInit {
     this.newItemImageDataUrl = null;
     this.newItemImageName = null;
     this.isItemModalOpen = true;
+    setTimeout(() => {
+      this.itemNameInputRef?.nativeElement.focus();
+    }, 0);
   }
 
   closeItemModal(): void {
@@ -189,4 +204,18 @@ export class EditorComponent implements OnInit {
     });
     this.isTierModalOpen = false;
   }
+}
+
+function isTierlistItem(value: unknown): value is TierlistItem {
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+  const item = value as Record<string, unknown>;
+  return (
+    typeof item['id'] === 'string' &&
+    typeof item['name'] === 'string' &&
+    typeof item['color'] === 'string' &&
+    /^#[0-9a-f]{6}$/i.test(item['color']) &&
+    (item['imageUrl'] === null || typeof item['imageUrl'] === 'string')
+  );
 }
