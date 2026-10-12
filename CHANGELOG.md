@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/compare/v1.0.0...v1.1.0) (2026-10-12)
+
+
+### Features
+
+* add elements ([#25](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/issues/25)) ([39630c5](https://github.com/2711AnnaMaria/modul-324-buelk-minotti-hufschmid/commit/39630c5450fec2d260ca98ea75ef1c4043f65a43))
+
 ## 1.0.0 (2026-10-12)
 
 
