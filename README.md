@@ -75,3 +75,5 @@ soll ermöglichen, dass ein Gesamtüberblick von Anfang an existiert.
 
 - `npm run watch` - Überwacht Dateien und führt einen kontinuierlichen Build durch
 - `npm test` - Führt die Tests aus
+
+Demo
